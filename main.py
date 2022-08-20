@@ -25,17 +25,27 @@ class Item(BaseModel):
   authors: str
   summary : str
 
-
+"""
+TODO: need to change the summary to abstract
+{
+  "titleId":"12",
+  "title":"hey ",
+  "createdOn":"2022",
+  "authors":"sadfsdaf",
+  "url":"https://sih-data.s3.ap-south-1.amazonaws.com/A+study+of+yoga%2C+its+benefits+and+true+self.pdf",
+  "summary":""
+}
+"""
 
 @app.post("/")
 async def pdftotext(item: Item):
-  # a = {}
-  # a['id'] = item.titleId
-  # a['title'] = item.title
-  # a['createdOn'] = int(item.createdOn)
-  # a['authors'] = item.authors
-  # a['url'] = item.url
-  # a['summary'] = item.summary
-  # a['content'] = helper(item.url)
+  a = {}
+  a['id'] = item.titleId
+  a['title'] = item.title
+  a['createdOn'] = int(item.createdOn)
+  a['authors'] = item.authors
+  a['url'] = item.url
+  a['summary'] = item.summary
+  a['content'] = helper(item.url)
   # client.collections['test'].documents.create(a)
-  return item
+  return a
