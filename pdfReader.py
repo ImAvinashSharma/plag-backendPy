@@ -1,10 +1,14 @@
 import pdftotext
-from six.moves.urllib.request import urlopen
+from urllib.request import urlopen,Request
 import io
 import re
 
 def helper(url):
-  remote_file = urlopen(url).read()
+  req = Request(
+    url=url,
+    headers={'User-Agent': 'Mozilla/5.0'}
+  )
+  remote_file = urlopen(req).read()
   memory_file = io.BytesIO(remote_file)
   pdf = pdftotext.PDF(memory_file)
   content = ''
